@@ -169,14 +169,8 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="pswrd1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="password"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="pswrd2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="re- enter password"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>

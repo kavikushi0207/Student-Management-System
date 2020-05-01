@@ -86,10 +86,6 @@ public class signUpForm extends javax.swing.JFrame {
             }
         });
 
-        pswrd1.setText("password");
-
-        pswrd2.setText("re- enter password");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/password.png"))); // NOI18N
 
