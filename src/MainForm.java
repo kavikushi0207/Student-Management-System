@@ -39,6 +39,7 @@ public class MainForm extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menustd = new javax.swing.JMenu();
         menuadd = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -142,6 +143,15 @@ public class MainForm extends javax.swing.JFrame {
         });
         menustd.add(menuadd);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_user-group_285648.png"))); // NOI18N
+        jMenuItem1.setText("Manage");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menustd.add(jMenuItem1);
+
         jMenuBar1.add(menustd);
 
         setJMenuBar(jMenuBar1);
@@ -167,6 +177,14 @@ public class MainForm extends javax.swing.JFrame {
        addstd.setLocationRelativeTo(null);
        addstd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_menuaddActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        manageStudents mngstd= new manageStudents();
+       mngstd.setVisible(true);
+       mngstd.pack();
+       mngstd.setLocationRelativeTo(null);
+       mngstd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +224,7 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

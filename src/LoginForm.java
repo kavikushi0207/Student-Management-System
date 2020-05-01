@@ -234,7 +234,7 @@ public class LoginForm extends javax.swing.JFrame {
                     mf.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     MainForm.lblwelcome.setText(" Hey welcome "+jTextField1_username.getText()+"!!!");
                     //lable count wil change with student count
-                    MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("user")));
+                    MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));
                      //lable count wil change with course count
                     MainForm.lblcrse.setText("No of available Course  = "+Integer.toString(myFunction.countData("course")));
                     this.dispose();
