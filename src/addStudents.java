@@ -2,6 +2,8 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,6 +20,7 @@ public class addStudents extends javax.swing.JFrame {
     /**
      * Creates new form addStudents
      */
+    student std = new student();
     public addStudents() {
         initComponents();
     }
@@ -80,6 +83,12 @@ public class addStudents extends javax.swing.JFrame {
         rbtnmale.setText("Male");
 
         rbtnfemale.setText("Female");
+
+        txtphone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtphoneKeyTyped(evt);
+            }
+        });
 
         txtaddress.setColumns(20);
         txtaddress.setRows(5);
@@ -185,7 +194,7 @@ public class addStudents extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addGap(34, 34, 34)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnadd)
                     .addComponent(btncancel))
@@ -231,19 +240,38 @@ public class addStudents extends javax.swing.JFrame {
         String lname=txtlname.getText();
         String phone =txtphone.getText();
         String address = txtaddress.getText();
-        String sex ="Male";
+        String sex ="";
         if(rbtnfemale.isSelected())
         {
             sex = "Female";
+        }
+        else if (rbtnmale.isSelected())
+        {
+            sex="Male";
         }
         if (verifText())
         {
             SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
             String dob =dateformat.format(dtpicker.getDate());
             student std=new student();
-            std.insertUpdateDeleteStudent('i',null, fname, lname, sex, dob, phone, address); 
+            std.insertUpdateDeleteStudent('i',null, fname, lname, sex, dob, phone, address);
+            
+            MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));
+            
+             manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
+            std.fillStudentJtable(manageStudents.jTable1, "");
+            
+           txtaddress.setText("");
+           txtfname.setText("");
+           txtlname.setText("");
+           txtphone.setText("");
+           dtpicker.setDate(null);
+           rbtnfemale.setSelected(false);
+           rbtnmale.setSelected(false);
         }
-        MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));
+        
+        
+        
        
         
               
@@ -253,6 +281,14 @@ public class addStudents extends javax.swing.JFrame {
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btncancelActionPerformed
+
+    private void txtphoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtphoneKeyTyped
+       //to allow only numbers
+        if(!Character.isDigit(evt.getKeyChar()))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtphoneKeyTyped
 
     /**
      * @param args the command line arguments

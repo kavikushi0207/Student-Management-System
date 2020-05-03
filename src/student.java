@@ -37,6 +37,49 @@ public class student {
                 Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        //u for update
+        if(operation =='u')
+        {
+            try {
+                ps=con.prepareStatement("UPDATE student SET first_name = ? ,last_name = ? ,sex = ? ,DoB = ? ,phone = ? ,address = ? WHERE ID = ?");
+                ps.setString(1, fname);
+                ps.setString(2, lname);
+                ps.setString(3, sex);
+                ps.setString(4, dob);
+                ps.setString(5, phone);
+                ps.setString(6, address);
+                ps.setInt(7,id);
+                if(ps.executeUpdate()>0)
+                {
+                    JOptionPane.showMessageDialog(null,"student data is updated.");
+                }
+           
+                
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        //d for remove
+        if(operation =='d')
+        {
+            try {
+                ps=con.prepareStatement("DELETE FROM `student` WHERE `id`=?");
+                
+                ps.setInt(1,id);
+                if(ps.executeUpdate()>0)
+                {
+                    JOptionPane.showMessageDialog(null,"A data row is deleted successfully!");
+                }
+                
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
     }
     public static void fillStudentJtable(JTable table, String valueToSearch) {

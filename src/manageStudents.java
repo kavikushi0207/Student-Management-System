@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,9 @@ public class manageStudents extends javax.swing.JFrame {
     public manageStudents() {
         initComponents();
         std.fillStudentJtable(jTable1,"");
+        ButtonGroup btngrp= new ButtonGroup();
+        btngrp.add(rbtnM);
+        btngrp.add(rbtnF);
                 
               
     }
@@ -39,12 +43,12 @@ public class manageStudents extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     public boolean verifText()
     {
-        if(txtfname.getText().equals(" ")|| txtlname.getText().equals("")|| txtphone.getText().equals("")||txtaddress.getText().equals("")||dtpicker.getDate()==null)
+        if(txtFN.getText().equals(" ")|| txtLN.getText().equals("")|| txtphn.getText().equals("")||txtadrs.getText().equals("")||txtid1.getText().equals("")||dtpicker1.getDate()==null)
         {
             JOptionPane.showMessageDialog(null, "All fields are required");
             return false;
         }
-        else if(dtpicker.getDate().compareTo(new Date())>0)
+        else if(dtpicker1.getDate().compareTo(new Date())>0)
         {
             JOptionPane.showMessageDialog(null, "invalid Date of Birth!");
             return false;
@@ -62,14 +66,14 @@ public class manageStudents extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtfname = new javax.swing.JTextField();
-        txtlname = new javax.swing.JTextField();
-        rbtnmale = new javax.swing.JRadioButton();
-        rbtnfemale = new javax.swing.JRadioButton();
-        dtpicker = new com.toedter.calendar.JDateChooser();
-        txtphone = new javax.swing.JTextField();
+        txtFN = new javax.swing.JTextField();
+        txtLN = new javax.swing.JTextField();
+        rbtnM = new javax.swing.JRadioButton();
+        rbtnF = new javax.swing.JRadioButton();
+        dtpicker1 = new com.toedter.calendar.JDateChooser();
+        txtphn = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtaddress = new javax.swing.JTextArea();
+        txtadrs = new javax.swing.JTextArea();
         btnedit = new javax.swing.JButton();
         btnremove = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -116,21 +120,21 @@ public class manageStudents extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Address     :");
 
-        rbtnmale.setBackground(new java.awt.Color(102, 0, 102));
-        rbtnmale.setForeground(new java.awt.Color(204, 204, 204));
-        rbtnmale.setText("Male");
+        rbtnM.setBackground(new java.awt.Color(102, 0, 102));
+        rbtnM.setForeground(new java.awt.Color(204, 204, 204));
+        rbtnM.setText("Male");
 
-        rbtnfemale.setBackground(new java.awt.Color(102, 0, 102));
-        rbtnfemale.setForeground(new java.awt.Color(204, 204, 204));
-        rbtnfemale.setText("Female");
+        rbtnF.setBackground(new java.awt.Color(102, 0, 102));
+        rbtnF.setForeground(new java.awt.Color(204, 204, 204));
+        rbtnF.setText("Female");
 
-        txtaddress.setColumns(20);
-        txtaddress.setRows(5);
-        jScrollPane1.setViewportView(txtaddress);
+        txtadrs.setColumns(20);
+        txtadrs.setRows(5);
+        jScrollPane1.setViewportView(txtadrs);
 
         btnedit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnedit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_update_172618.png"))); // NOI18N
-        btnedit.setText("Edit");
+        btnedit.setText("update");
         btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneditActionPerformed(evt);
@@ -205,6 +209,8 @@ public class manageStudents extends javax.swing.JFrame {
             }
         });
 
+        txtid1.setEditable(false);
+
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
@@ -220,11 +226,11 @@ public class manageStudents extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 6, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnadd1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnremove))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,27 +245,25 @@ public class manageStudents extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(dtpicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dtpicker1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(rbtnmale)
+                                        .addComponent(rbtnM)
                                         .addGap(72, 72, 72)
-                                        .addComponent(rbtnfemale, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtphone, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
-                                    .addComponent(txtlname, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtfname, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(rbtnF, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtphn)
+                                    .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFN, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtid1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabel2))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtsrch, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +276,7 @@ public class manageStudents extends javax.swing.JFrame {
                             .addComponent(txtid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(25, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtsrch))
@@ -281,24 +285,24 @@ public class manageStudents extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtfname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtFN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtlname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(rbtnmale)
-                            .addComponent(rbtnfemale))
+                            .addComponent(rbtnM)
+                            .addComponent(rbtnF))
                         .addGap(48, 48, 48)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dtpicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dtpicker1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtphone))
+                            .addComponent(txtphn))
                         .addGap(54, 54, 54)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -309,53 +313,96 @@ public class manageStudents extends javax.swing.JFrame {
                                     .addComponent(btnedit)
                                     .addComponent(btnadd1)))
                             .addComponent(jLabel13)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1051, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(567, 567, 567))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 177, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
-        String fname=txtfname.getText();
-        String lname=txtlname.getText();
-        String phone =txtphone.getText();
-        String address = txtaddress.getText();
-        String sex ="Male";
-        if(rbtnfemale.isSelected())
+        String fname=txtFN.getText();
+        String lname=txtLN.getText();
+        String phone =txtphn.getText();
+        String address = txtadrs.getText();
+        int id = Integer.valueOf(txtid1.getText());
+        String sex="" ;
+        if(rbtnF.isSelected())
         {
+            //rbtnmale.setSelected(false);
             sex = "Female";
+        }
+        else if(rbtnM.isSelected())
+        {
+            //rbtnfemale.setSelected(false);
+            sex = "Male ";
         }
         if (verifText())
         {
             SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
-            String dob =dateformat.format(dtpicker.getDate());
+            String dob =dateformat.format(dtpicker1.getDate());
             student std=new student();
-            std.insertUpdateDeleteStudent('i',null, fname, lname, sex, dob, phone, address);
+            std.insertUpdateDeleteStudent('u',id, fname, lname, sex, dob, phone, address);
+            
+            manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
+           std.fillStudentJtable(manageStudents.jTable1, "");
+                txtadrs.setText("");
+                txtFN.setText("");
+                txtLN.setText("");
+                txtphn.setText("");
+                dtpicker1.setDate(null);
+                rbtnF.setSelected(false);
+                rbtnM.setSelected(false);
         }
-        MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));
+       
 
     }//GEN-LAST:event_btneditActionPerformed
 
     private void btnremoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnremoveActionPerformed
-        this.dispose();
+        
+        if(txtid1.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, " None is selected!");
+        }
+        int id =Integer.valueOf(txtid1.getText());
+        std.insertUpdateDeleteStudent('d',id, null, null, null, null, null, null);
+        
+//        manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
+//        std.fillStudentJtable(manageStudents.jTable1, "");
+//        
+//        txtid1.setText("");
+//        txtadrs.setText("");
+//        txtFN.setText("");
+//        txtLN.setText("");
+//        txtphn.setText("");
+//        dtpicker1.setDate(null);
+//        rbtnF.setSelected(false); 
+//        rbtnM.setSelected(false);
+        
+        
+//        MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));  
+        
+        
+        
     }//GEN-LAST:event_btnremoveActionPerformed
 
     private void btnadd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnadd1ActionPerformed
-        addStudents addstd= new addStudents();
+       addStudents addstd= new addStudents();
        addstd.setVisible(true);
        addstd.pack();
        addstd.setLocationRelativeTo(null);
@@ -367,23 +414,23 @@ public class manageStudents extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         if(model.getValueAt(rowIndex, 3).toString().equals("Male"))
         {
-            rbtnmale.setSelected(true);
-            rbtnfemale.setSelected(false);
+            rbtnM.setSelected(true);
+            rbtnF.setSelected(false);
         }
         else{
-            rbtnmale.setSelected(false);
-            rbtnfemale.setSelected(true);
+            rbtnM.setSelected(false);
+            rbtnF.setSelected(true);
         }
             
         txtid1.setText(model.getValueAt(rowIndex, 0).toString());
-        txtfname.setText(model.getValueAt(rowIndex, 1).toString());
-        txtlname.setText(model.getValueAt(rowIndex, 2).toString());
-        txtphone.setText(model.getValueAt(rowIndex, 5).toString());
-        txtaddress.setText(model.getValueAt(rowIndex, 6).toString());
+        txtFN.setText(model.getValueAt(rowIndex, 1).toString());
+        txtLN.setText(model.getValueAt(rowIndex, 2).toString());
+        txtphn.setText(model.getValueAt(rowIndex, 5).toString());
+        txtadrs.setText(model.getValueAt(rowIndex, 6).toString());
         Date dob ;
         try {
             dob = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(rowIndex,4).toString());
-            dtpicker.setDate(dob);
+            dtpicker1.setDate(dob);
         } catch (ParseException ex) {
             Logger.getLogger(manageStudents.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -435,13 +482,13 @@ public class manageStudents extends javax.swing.JFrame {
             txtsrch.setText("");
         }
         txtsrch.setForeground(Color.black);
-        jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
-        std.fillStudentJtable(jTable1, txtsrch.getText());
+        
     }//GEN-LAST:event_txtsrchKeyPressed
 
     private void txtsrchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsrchKeyReleased
-        // TODO add your handling code here:
-        //txtsrch.setForeground(Color.black);
+        jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
+        std.fillStudentJtable(jTable1, txtsrch.getText());
+        
     }//GEN-LAST:event_txtsrchKeyReleased
 
     private void txtsrchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtsrchMouseEntered
@@ -489,7 +536,7 @@ public class manageStudents extends javax.swing.JFrame {
     private javax.swing.JButton btnadd1;
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnremove;
-    private com.toedter.calendar.JDateChooser dtpicker;
+    private com.toedter.calendar.JDateChooser dtpicker1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -501,14 +548,14 @@ public class manageStudents extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JRadioButton rbtnfemale;
-    private javax.swing.JRadioButton rbtnmale;
-    private javax.swing.JTextArea txtaddress;
-    private javax.swing.JTextField txtfname;
+    public static javax.swing.JTable jTable1;
+    private javax.swing.JRadioButton rbtnF;
+    private javax.swing.JRadioButton rbtnM;
+    private javax.swing.JTextField txtFN;
+    private javax.swing.JTextField txtLN;
+    private javax.swing.JTextArea txtadrs;
     private javax.swing.JTextField txtid1;
-    private javax.swing.JTextField txtlname;
-    private javax.swing.JTextField txtphone;
+    private javax.swing.JTextField txtphn;
     private javax.swing.JTextField txtsrch;
     // End of variables declaration//GEN-END:variables
 }
