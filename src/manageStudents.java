@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,13 +25,18 @@ public class manageStudents extends javax.swing.JFrame {
     
     student std = new student();
     
-    
+    DefaultTableModel model;
     public manageStudents() {
         initComponents();
         std.fillStudentJtable(jTable1,"");
         ButtonGroup btngrp= new ButtonGroup();
         btngrp.add(rbtnM);
         btngrp.add(rbtnF);
+        model = (DefaultTableModel)jTable1.getModel();
+        jTable1.setRowHeight(40);
+        jTable1.setShowGrid(true);
+        jTable1.setGridColor(Color.magenta);
+        jTable1.setSelectionBackground(Color.black);
                 
               
     }
@@ -83,11 +89,12 @@ public class manageStudents extends javax.swing.JFrame {
         txtsrch = new javax.swing.JTextField();
         txtid1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        btncancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manage Students", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Times New Roman", 3, 24), new java.awt.Color(204, 204, 204))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Manage Students", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Times New Roman", 3, 36), new java.awt.Color(204, 204, 204))); // NOI18N
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel1MouseClicked(evt);
@@ -120,11 +127,11 @@ public class manageStudents extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Address     :");
 
-        rbtnM.setBackground(new java.awt.Color(102, 0, 102));
+        rbtnM.setBackground(new java.awt.Color(51, 0, 51));
         rbtnM.setForeground(new java.awt.Color(204, 204, 204));
         rbtnM.setText("Male");
 
-        rbtnF.setBackground(new java.awt.Color(102, 0, 102));
+        rbtnF.setBackground(new java.awt.Color(51, 0, 51));
         rbtnF.setForeground(new java.awt.Color(204, 204, 204));
         rbtnF.setText("Female");
 
@@ -142,7 +149,7 @@ public class manageStudents extends javax.swing.JFrame {
         });
 
         btnremove.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnremove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/index.png"))); // NOI18N
+        btnremove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_minus_1645995.png"))); // NOI18N
         btnremove.setText("remove");
         btnremove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +181,11 @@ public class manageStudents extends javax.swing.JFrame {
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
             }
         });
         jScrollPane2.setViewportView(jTable1);
@@ -216,53 +228,68 @@ public class manageStudents extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_icon-111-search_314478.png"))); // NOI18N
 
+        btncancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btncancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_Delete_1493279.png"))); // NOI18N
+        btncancel.setText("cancel");
+        btncancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btncancel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnadd1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnremove))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(dtpicker1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(rbtnM)
-                                        .addGap(72, 72, 72)
-                                        .addComponent(rbtnF, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtphn)
-                                    .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtFN, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtid1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
-                    .addComponent(jLabel2))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtsrch, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnadd1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnedit)
+                                        .addGap(33, 33, 33)
+                                        .addComponent(btnremove, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(dtpicker1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(rbtnM)
+                                                .addGap(72, 72, 72)
+                                                .addComponent(rbtnF, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtphn)
+                                            .addComponent(txtLN, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtFN, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtid1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(20, 20, 20)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtsrch, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
@@ -273,14 +300,12 @@ public class manageStudents extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(txtid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtid1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtsrch))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addComponent(txtsrch))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -311,12 +336,13 @@ public class manageStudents extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnremove)
                                     .addComponent(btnedit)
-                                    .addComponent(btnadd1)))
+                                    .addComponent(btnadd1)
+                                    .addComponent(btncancel)))
                             .addComponent(jLabel13)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(567, 567, 567))
+                .addGap(647, 647, 647))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -382,20 +408,19 @@ public class manageStudents extends javax.swing.JFrame {
         int id =Integer.valueOf(txtid1.getText());
         std.insertUpdateDeleteStudent('d',id, null, null, null, null, null, null);
         
-//        manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
-//        std.fillStudentJtable(manageStudents.jTable1, "");
-//        
-//        txtid1.setText("");
-//        txtadrs.setText("");
-//        txtFN.setText("");
-//        txtLN.setText("");
-//        txtphn.setText("");
-//        dtpicker1.setDate(null);
-//        rbtnF.setSelected(false); 
-//        rbtnM.setSelected(false);
+       manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
+        std.fillStudentJtable(manageStudents.jTable1, "");
         
+        txtid1.setText("");
+        txtadrs.setText("");
+        txtFN.setText("");
+        txtLN.setText("");
+        txtphn.setText("");
+        dtpicker1.setDate(null);
+        rbtnF.setSelected(false); 
+        rbtnM.setSelected(false);
         
-//        MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));  
+        MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));  
         
         
         
@@ -409,9 +434,10 @@ public class manageStudents extends javax.swing.JFrame {
        addstd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_btnadd1ActionPerformed
 
+    int rowIndex;
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int rowIndex = jTable1.getSelectedRow();
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        rowIndex = jTable1.getSelectedRow();
+        
         if(model.getValueAt(rowIndex, 3).toString().equals("Male"))
         {
             rbtnM.setSelected(true);
@@ -496,6 +522,42 @@ public class manageStudents extends javax.swing.JFrame {
         //txtsrch.setForeground(Color.black);
     }//GEN-LAST:event_txtsrchMouseEntered
 
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        
+        
+        if(evt.getKeyCode() == KeyEvent.VK_UP ||evt.getKeyCode() == KeyEvent.VK_DOWN )
+        {
+            rowIndex = jTable1.getSelectedRow();
+            txtid1.setText(model.getValueAt(rowIndex, 0).toString());
+            txtFN.setText(model.getValueAt(rowIndex, 1).toString());
+            txtLN.setText(model.getValueAt(rowIndex, 2).toString());
+            txtphn.setText(model.getValueAt(rowIndex, 5).toString());
+            txtadrs.setText(model.getValueAt(rowIndex, 6).toString());
+            
+            if(model.getValueAt(rowIndex, 3).toString().equals("Male"))
+            {
+            rbtnM.setSelected(true);
+            rbtnF.setSelected(false);
+            }
+            else{
+            rbtnM.setSelected(false);
+            rbtnF.setSelected(true);
+            }
+            
+            Date dob ;
+            try {
+                dob = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(rowIndex,4).toString());
+                dtpicker1.setDate(dob);
+            } catch (ParseException ex) {
+                Logger.getLogger(manageStudents.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_jTable1KeyReleased
+
+    private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btncancelActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -534,6 +596,7 @@ public class manageStudents extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnadd1;
+    private javax.swing.JButton btncancel;
     private javax.swing.JButton btnedit;
     private javax.swing.JButton btnremove;
     private com.toedter.calendar.JDateChooser dtpicker1;

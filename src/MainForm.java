@@ -40,6 +40,9 @@ public class MainForm extends javax.swing.JFrame {
         menustd = new javax.swing.JMenu();
         menuadd = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -128,7 +131,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap(178, Short.MAX_VALUE))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
 
         menustd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/student.png"))); // NOI18N
         menustd.setText("Students");
@@ -152,6 +155,29 @@ public class MainForm extends javax.swing.JFrame {
         menustd.add(jMenuItem1);
 
         jMenuBar1.add(menustd);
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_books-bookcase-bookshelf-shelf-report_3209266.png"))); // NOI18N
+        jMenu1.setText("Courses");
+
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_document_text_add_103511.png"))); // NOI18N
+        jMenuItem2.setText("Add");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_search_326690.png"))); // NOI18N
+        jMenuItem3.setText("manage");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -184,6 +210,22 @@ public class MainForm extends javax.swing.JFrame {
        mngstd.setLocationRelativeTo(null);
        mngstd.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       course_form addcrs= new course_form();
+       addcrs.setVisible(true);
+       addcrs.pack();
+       addcrs.setLocationRelativeTo(null);
+       addcrs.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       manageCourse mngcrs= new manageCourse();
+       mngcrs.setVisible(true);
+       mngcrs.pack();
+       mngcrs.setLocationRelativeTo(null);
+       mngcrs.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,8 +264,11 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

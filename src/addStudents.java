@@ -258,7 +258,7 @@ public class addStudents extends javax.swing.JFrame {
             
             MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));
             
-             manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
+            manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
             std.fillStudentJtable(manageStudents.jTable1, "");
             
            txtaddress.setText("");

@@ -236,7 +236,7 @@ public class LoginForm extends javax.swing.JFrame {
                     //lable count wil change with student count
                     MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));
                      //lable count wil change with course count
-                    MainForm.lblcrse.setText("No of available Course  = "+Integer.toString(myFunction.countData("course")));
+                    MainForm.lblcrse.setText("No of available Courses  = "+Integer.toString(myFunction.countData("course")));
                     this.dispose();
                 }else{
                     System.out.println("NO");
