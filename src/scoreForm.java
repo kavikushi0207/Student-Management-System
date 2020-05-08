@@ -1,4 +1,5 @@
 
+//import static editDeleteScore.jTable1;
 import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -218,13 +219,14 @@ public class scoreForm extends javax.swing.JFrame {
         String des=txtdscrptn.getText();
         System.out.println(crsId);
         sc.insertUpdateDeleteStudent('i', stdId, crsId, score,des);
+        
+        editDeleteScore.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Student Id","course Id","Score","Description"}));
+        sc.fillScoreJtable(editDeleteScore.jTable1);
 
-//        course_form addcrs= new course_form();
-//        addcrs.setVisible(true);
-//        addcrs.pack();
-//        addcrs.setLocationRelativeTo(null);
-//        addcrs.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //        }
+        txtdscrptn.setText("");
+        txtscre.setText("");
+        txtstdid.setText("");
+        cmbcrs.setSelectedItem(null);
     }//GEN-LAST:event_btnaddcoreActionPerformed
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed

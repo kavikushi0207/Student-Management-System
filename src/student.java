@@ -65,7 +65,10 @@ public class student {
         //d for remove
         if(operation =='d')
         {
-            try {
+            int yesOrNo = JOptionPane.showConfirmDialog(null, "the relevant scores also will be deleted","delete student",JOptionPane.OK_CANCEL_OPTION);
+            if(yesOrNo==0)
+            {
+                try {
                 ps=con.prepareStatement("DELETE FROM `student` WHERE `id`=?");
                 
                 ps.setInt(1,id);
@@ -79,6 +82,8 @@ public class student {
             } catch (SQLException ex) {
                 Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
             }
+            }
+            
         }
         
     }

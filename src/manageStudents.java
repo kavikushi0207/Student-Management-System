@@ -400,7 +400,11 @@ public class manageStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_btneditActionPerformed
 
     private void btnremoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnremoveActionPerformed
-        
+//        ALTER TABLE score
+//        ADD CONSTRAINT fk_score_student
+//        FOREIGN KEY (`student_id`)
+//        REFERENCES student(ID)
+//        ON DELETE CASCADE
         if(txtid1.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, " None is selected!");

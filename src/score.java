@@ -1,15 +1,18 @@
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class score {
     
-     public void insertUpdateDeleteStudent(char operation, Integer Sid, Integer Cid,double score,String description)
+     public void insertUpdateDeleteStudent(char operation, Integer Sid, Integer Cid,Double score,String description)
     {
         Connection con =myConnection.getConnection();
         PreparedStatement ps;
@@ -35,46 +38,75 @@ public class score {
                 Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-//        //u for update
-//        if(operation =='u')
-//        {
-//            try {
-//                ps=con.prepareStatement("UPDATE `course` SET `Lable`=?,`hours number`=? WHERE `ID`=?");
-//                ps.setString(1, courseTitle);
-//                ps.setInt(2, hours);
-//                
-//                ps.setInt(3,id);
-//                if(ps.executeUpdate()>0)
-//                {
-//                    JOptionPane.showMessageDialog(null,"course info is updated.");
-//                }
-//           
-//                
-//                
-//                
-//            } catch (SQLException ex) {
-//                Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
+        //u for update
+        if(operation =='u')
+        {
+            try {
+                ps=con.prepareStatement("UPDATE `score` SET `student_score`=?,`description`=? WHERE `student_id`=? AND `course_id`=?");
+                ps.setDouble(1, score);
+                ps.setString(2, description);
+                ps.setInt(3, Sid);
+                ps.setInt(4, Cid);
+    
+                if(ps.executeUpdate()>0)
+                {
+                    JOptionPane.showMessageDialog(null,"score value is updated.");
+                }
+           
+                
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 //        
-//        //d for remove
-//        if(operation =='d')
-//        {
-//            try {
-//                ps=con.prepareStatement("DELETE FROM `course` WHERE `id`=?");
-//                
-//                ps.setInt(1,id);
-//                if(ps.executeUpdate()>0)
-//                {
-//                    JOptionPane.showMessageDialog(null,"A data row is deleted successfully!");
-//                }
-//                
-//                
-//                
-//            } catch (SQLException ex) {
-//                Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//      }
+        //d for remove
+        if(operation =='d')
+        {
+            try {
+                ps=con.prepareStatement("DELETE FROM `score` WHERE `student_id`=? and`course_id`=?");
+                ps.setInt(1, Sid);
+                ps.setInt(2, Cid);
+                if(ps.executeUpdate()>0)
+                {
+                    JOptionPane.showMessageDialog(null,"score is deleted successfully!");
+                }
+                
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
+            }
+      }
     }
+     public static void fillScoreJtable(JTable table) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement("SELECT * FROM `score` ");
+           
+            
+            ResultSet rs =ps.executeQuery();
+            DefaultTableModel model =(DefaultTableModel)table.getModel();
+            Object[] row;
+            
+            while(rs.next())
+            {
+                row= new Object[4];
+                row[0]=rs.getInt(1);
+                row[1]=rs.getInt(2);
+                row[2]=rs.getDouble(3);
+                row[3]=rs.getString(4);
+                model.addRow(row); 
+            
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    
     
 }
