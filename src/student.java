@@ -66,7 +66,7 @@ public class student {
         if(operation =='d')
         {
             int yesOrNo = JOptionPane.showConfirmDialog(null, "the relevant scores also will be deleted","delete student",JOptionPane.OK_CANCEL_OPTION);
-            if(yesOrNo==0)
+            if(yesOrNo==JOptionPane.OK_OPTION)
             {
                 try {
                 ps=con.prepareStatement("DELETE FROM `student` WHERE `id`=?");

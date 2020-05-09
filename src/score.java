@@ -106,6 +106,34 @@ public class score {
         }
         
     }
+public static void ShowAllScore(JTable table) {
+        Connection con = myConnection.getConnection();
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement("SELECT `student_id`,first_name,last_name,Lable,student_score FROM `score` INNER JOIN student as stab ON stab.id=`student_id` INNER join course as ctab on ctab.id=`course_id`");
+           
+            
+            ResultSet rs =ps.executeQuery();
+            DefaultTableModel model =(DefaultTableModel)table.getModel();
+            Object[] row;
+            
+            while(rs.next())
+            {
+                row= new Object[5];
+                row[0]=rs.getInt(1);
+                row[1]=rs.getString(2);
+                row[2]=rs.getString(3);
+                row[3]=rs.getString(4);
+                row[4]=rs.getDouble(5);
+                
+                model.addRow(row); 
+            
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
     
     

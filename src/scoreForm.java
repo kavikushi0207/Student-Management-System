@@ -112,7 +112,7 @@ public class scoreForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "fist name", "last name", "sex", "DoB", "phone no.", "address"
+                "Student ID", "fist name", "last name", "sex", "DoB", "phone no.", "address"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,11 +217,18 @@ public class scoreForm extends javax.swing.JFrame {
         int crsId= Integer.valueOf(c.getCourseId(cmbcrs.getSelectedItem().toString()));
         double score=Double.valueOf(txtscre.getText());
         String des=txtdscrptn.getText();
-        System.out.println(crsId);
-        sc.insertUpdateDeleteStudent('i', stdId, crsId, score,des);
         
+        
+        sc.insertUpdateDeleteStudent('i', stdId, crsId, score,des);
+        try{
         editDeleteScore.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Student Id","course Id","Score","Description"}));
         sc.fillScoreJtable(editDeleteScore.jTable1);
+        }
+        
+         catch(Exception ex)
+         {
+            System.out.println(ex.getMessage());
+         }
 
         txtdscrptn.setText("");
         txtscre.setText("");

@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +22,7 @@ public class manageCourse extends javax.swing.JFrame {
      * Creates new form manageCourse
      */
     course c= new course();
+    DefaultTableModel model;
     public manageCourse() {
         initComponents();
         c.fillCourseJtable(jTable1);
@@ -69,6 +71,8 @@ public class manageCourse extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("No. of hours :");
 
+        txtid.setEditable(false);
+
         btnadd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnadd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_sign-add_299068.png"))); // NOI18N
         btnadd.setText("Add");
@@ -100,6 +104,11 @@ public class manageCourse extends javax.swing.JFrame {
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
@@ -321,6 +330,10 @@ public class manageCourse extends javax.swing.JFrame {
             manageCourse.jTable1.setModel(new DefaultTableModel(null,new Object[]{"ID","Course title","no. of hours"}));
             c.fillCourseJtable(manageCourse.jTable1);
             //JOptionPane.showMessageDialog(null, "The course data is updated");
+            
+            txtcrstitle.setText("");
+            txtid.setText("");
+            spinhrs.setValue(0);
         
         }
         else{
@@ -335,6 +348,24 @@ public class manageCourse extends javax.swing.JFrame {
         txtcrstitle.setText(jTable1.getValueAt(index,1).toString());
         spinhrs.setValue(Integer.valueOf(jTable1.getValueAt(index,2).toString()));
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_UP ||evt.getKeyCode() == KeyEvent.VK_DOWN )
+        {
+            
+            try{
+            int rowIndex = jTable1.getSelectedRow();
+            txtid.setText(model.getValueAt(rowIndex, 0).toString());
+            txtcrstitle.setText(model.getValueAt(rowIndex, 1).toString());
+            spinhrs.setValue(model.getValueAt(rowIndex, 2).toString());
+            }
+            catch(Exception ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+    }//GEN-LAST:event_jTable1KeyReleased
 
     /**
      * @param args the command line arguments

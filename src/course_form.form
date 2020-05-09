@@ -61,7 +61,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtcrstitle" max="32767" attributes="0"/>
+                              <Component id="txtlabel" max="32767" attributes="0"/>
                               <Component id="spinhrs" pref="298" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -82,7 +82,7 @@
                   <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="txtcrstitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtlabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -122,7 +122,7 @@
             <Property name="text" type="java.lang.String" value="No. of hours :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtcrstitle">
+        <Component class="javax.swing.JTextField" name="txtlabel">
         </Component>
         <Component class="javax.swing.JButton" name="btnadd">
           <Properties>

@@ -60,8 +60,10 @@ public class course {
         
         //d for remove
         if(operation =='d')
-        {
-            try {
+        {int yesOrNo = JOptionPane.showConfirmDialog(null, "the relevant scores also will be deleted","delete student",JOptionPane.OK_CANCEL_OPTION);
+            if(yesOrNo==JOptionPane.OK_OPTION)
+            {
+                try {
                 ps=con.prepareStatement("DELETE FROM `course` WHERE `id`=?");
                 
                 ps.setInt(1,id);
@@ -75,6 +77,9 @@ public class course {
             } catch (SQLException ex) {
                 Logger.getLogger(student.class.getName()).log(Level.SEVERE, null, ex);
             }
+            }
+            
+            
         }
     }
       public boolean isCourseExist(String courseName)

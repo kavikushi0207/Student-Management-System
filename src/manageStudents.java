@@ -135,6 +135,12 @@ public class manageStudents extends javax.swing.JFrame {
         rbtnF.setForeground(new java.awt.Color(204, 204, 204));
         rbtnF.setText("Female");
 
+        txtphn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtphnKeyTyped(evt);
+            }
+        });
+
         txtadrs.setColumns(20);
         txtadrs.setRows(5);
         jScrollPane1.setViewportView(txtadrs);
@@ -387,6 +393,7 @@ public class manageStudents extends javax.swing.JFrame {
             
             manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
            std.fillStudentJtable(manageStudents.jTable1, "");
+                txtid1.setText("");
                 txtadrs.setText("");
                 txtFN.setText("");
                 txtLN.setText("");
@@ -561,6 +568,13 @@ public class manageStudents extends javax.swing.JFrame {
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
         this.dispose();
     }//GEN-LAST:event_btncancelActionPerformed
+
+    private void txtphnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtphnKeyTyped
+       if(!Character.isDigit(evt.getKeyChar()))
+       {
+           evt.consume();
+       }
+    }//GEN-LAST:event_txtphnKeyTyped
 
     
     /**

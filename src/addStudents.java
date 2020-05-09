@@ -81,9 +81,24 @@ public class addStudents extends javax.swing.JFrame {
         jLabel13.setText("Address     :");
 
         rbtnmale.setText("Male");
+        rbtnmale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnmaleActionPerformed(evt);
+            }
+        });
 
         rbtnfemale.setText("Female");
+        rbtnfemale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnfemaleActionPerformed(evt);
+            }
+        });
 
+        txtphone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtphoneActionPerformed(evt);
+            }
+        });
         txtphone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtphoneKeyTyped(evt);
@@ -257,9 +272,14 @@ public class addStudents extends javax.swing.JFrame {
             std.insertUpdateDeleteStudent('i',null, fname, lname, sex, dob, phone, address);
             
             MainForm.lblstd.setText("No of joined Student = "+Integer.toString(myFunction.countData("student")));
-            
+            try{
             manageStudents.jTable1.setModel(new DefaultTableModel(null,new Object[]{"Id","fist name","last name","sex","DoB","phone no.","address"}));
-            std.fillStudentJtable(manageStudents.jTable1, "");
+            std.fillStudentJtable(manageStudents.jTable1, "");}
+             catch(Exception ex)
+            {
+            System.out.println(ex.getMessage());
+            }
+            
             
            txtaddress.setText("");
            txtfname.setText("");
@@ -289,6 +309,18 @@ public class addStudents extends javax.swing.JFrame {
            evt.consume();
        }
     }//GEN-LAST:event_txtphoneKeyTyped
+
+    private void rbtnfemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnfemaleActionPerformed
+        rbtnmale.setSelected(false);
+    }//GEN-LAST:event_rbtnfemaleActionPerformed
+
+    private void rbtnmaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnmaleActionPerformed
+       rbtnfemale.setSelected(false);
+    }//GEN-LAST:event_rbtnmaleActionPerformed
+
+    private void txtphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtphoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtphoneActionPerformed
 
     /**
      * @param args the command line arguments

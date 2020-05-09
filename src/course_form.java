@@ -34,7 +34,7 @@ public class course_form extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtcrstitle = new javax.swing.JTextField();
+        txtlabel = new javax.swing.JTextField();
         btnadd = new javax.swing.JButton();
         btncancel = new javax.swing.JButton();
         spinhrs = new javax.swing.JSpinner();
@@ -85,7 +85,7 @@ public class course_form extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(47, 47, 47)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtcrstitle)
+                            .addComponent(txtlabel)
                             .addComponent(spinhrs, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -100,7 +100,7 @@ public class course_form extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcrstitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtlabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,15 +127,22 @@ public class course_form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
-        if(!c.isCourseExist(txtcrstitle.getText())){
-            String courseTitle = txtcrstitle.getText();
+        if(!c.isCourseExist(txtlabel.getText())){
+            String courseTitle = txtlabel.getText();
         int hour = Integer.valueOf(spinhrs.getValue().toString());
         c.insertUpdateDeleteStudent('i', null, courseTitle, hour);
         
         MainForm.lblcrse.setText("No of available Courses = "+Integer.toString(myFunction.countData("course"))); 
-        
+        try{
         manageCourse.jTable1.setModel(new DefaultTableModel(null,new Object[]{"ID","Course title","no. of hours"}));
         c.fillCourseJtable(manageCourse.jTable1);
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        txtlabel.setText("");
+        spinhrs.setValue(0);
         
         }
         else{
@@ -190,6 +197,6 @@ public class course_form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner spinhrs;
-    private javax.swing.JTextField txtcrstitle;
+    private javax.swing.JTextField txtlabel;
     // End of variables declaration//GEN-END:variables
 }
